@@ -136,14 +136,14 @@ set(COLMAP_LINK_DIRS
 )
 
 set(COLMAP_INTERNAL_LIBRARIES
-    flann
+    # flann
     graclus
     lsd
     pba
     poisson_recon
-    sqlite3
+    # sqlite3
     sift_gpu
-    vlfeat
+    # vlfeat
 )
 
 set(COLMAP_EXTERNAL_LIBRARIES
