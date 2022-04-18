@@ -109,6 +109,12 @@ find_package(OpenGL REQUIRED)
 find_package(Glew REQUIRED)
 find_package(Git)
 
+find_package(SQLite3 REQUIRED)
+find_package(VLFEAT REQUIRED)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules (FLANN flann)
+
 if(CGAL_ENABLED)
     set(CGAL_DO_NOT_WARN_ABOUT_CMAKE_BUILD_TYPE TRUE)
     find_package(CGAL QUIET)
@@ -314,6 +320,9 @@ set(COLMAP_INCLUDE_DIRS
     ${CERES_INCLUDE_DIRS}
     ${METIS_INCLUDE_DIRS}
     ${GLEW_INCLUDE_DIRS}
+    ${FLANN_INCLUDE_DIRS}
+    ${SQLite3_INCLUDE_DIRS}
+    ${VLFEAT_INCLUDE_DIRS}
 )
 
 set(COLMAP_LINK_DIRS
@@ -330,6 +339,9 @@ set(COLMAP_EXTERNAL_LIBRARIES
     ${METIS_LIBRARIES}
     ${CERES_LIBRARIES}
     ${OPENGL_LIBRARIES}
+    ${FLANN_LIBRARIES}
+    ${SQLite3_LIBRARIES}
+    ${VLFEAT_LIBRARIES}
 )
 
 if(OPENMP_FOUND)
@@ -352,13 +364,13 @@ if(UNIX)
 endif()
 
 set(COLMAP_INTERNAL_LIBRARIES
-    flann
+    # flann
     lsd
     pba
     poisson_recon
-    sqlite3
+    # sqlite3
     sift_gpu
-    vlfeat
+    # vlfeat
 )
 
 include_directories(
@@ -377,13 +389,13 @@ add_subdirectory(src)
 # Generate source groups for Visual Studio, XCode, etc.
 ################################################################################
 
-COLMAP_ADD_SOURCE_DIR(lib/FLANN LIB_FLANN_SRCS *.h *.cpp *.hpp *.cu)
+# COLMAP_ADD_SOURCE_DIR(lib/FLANN LIB_FLANN_SRCS *.h *.cpp *.hpp *.cu)
 COLMAP_ADD_SOURCE_DIR(lib/LSD LIB_LSD_SRCS *.h *.c)
 COLMAP_ADD_SOURCE_DIR(lib/PBA LIB_PBA_SRCS *.h *.cpp *.cu)
 COLMAP_ADD_SOURCE_DIR(lib/PoissonRecon LIB_POISSON_RECON_SRCS *.h *.cpp *.inl)
 COLMAP_ADD_SOURCE_DIR(lib/SiftGPU LIB_SIFT_GPU_SRCS *.h *.cpp *.cu)
-COLMAP_ADD_SOURCE_DIR(lib/SQLite LIB_SQLITE_SRCS *.h *.c)
-COLMAP_ADD_SOURCE_DIR(lib/VLFeat LIB_VLFEAT_SRCS *.h *.c *.tc)
+# COLMAP_ADD_SOURCE_DIR(lib/SQLite LIB_SQLITE_SRCS *.h *.c)
+# COLMAP_ADD_SOURCE_DIR(lib/VLFeat LIB_VLFEAT_SRCS *.h *.c *.tc)
 
 COLMAP_ADD_SOURCE_DIR(src/base BASE_SRCS *.h *.cc)
 COLMAP_ADD_SOURCE_DIR(src/controllers CONTROLLERS_SRCS *.h *.cc)
@@ -403,13 +415,13 @@ COLMAP_ADD_SOURCE_DIR(src/util UTIL_SRCS *.h *.cc)
 # intellisense can't find any of the included files).
 add_library(
     ${COLMAP_SRC_ROOT_FOLDER}
-    ${LIB_FLANN_SRCS}
+    # ${LIB_FLANN_SRCS}
     ${LIB_LSD_SRCS}
     ${LIB_PBA_SRCS}
     ${LIB_POISSON_RECON_SRCS}
     ${LIB_SIFT_GPU_SRCS}
-    ${LIB_SQLITE_SRCS}
-    ${LIB_VLFEAT_SRCS}
+    # ${LIB_SQLITE_SRCS}
+    # ${LIB_VLFEAT_SRCS}
     ${BASE_SRCS}
     ${CONTROLLERS_SRCS}
     ${ESTIMATORS_SRCS}
