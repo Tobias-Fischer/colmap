@@ -102,6 +102,7 @@ if(COLMAP_FIND_QUIETLY)
 
     find_package(OpenGL QUIET)
     find_package(Glew QUIET)
+    find_package(VLFEAT QUIET)
 else()
     find_package(Ceres REQUIRED)
 
@@ -127,6 +128,7 @@ else()
 
     find_package(OpenGL REQUIRED)
     find_package(Glew REQUIRED)
+    find_package(VLFEAT REQUIRED)
 endif()
 
 # Set the exported variables.
@@ -158,6 +160,7 @@ set(COLMAP_INCLUDE_DIRS
     ${CERES_INCLUDE_DIRS}
     ${GLEW_INCLUDE_DIRS}
     ${SQLite3_INCLUDE_DIRS}
+    ${VLFEAT_INCLUDE_DIRS}
 )
 
 set(COLMAP_LINK_DIRS
@@ -171,7 +174,7 @@ set(COLMAP_INTERNAL_LIBRARIES
     poisson_recon
     sqlite3
     sift_gpu
-    vlfeat
+    # vlfeat
 )
 
 set(COLMAP_EXTERNAL_LIBRARIES
@@ -185,6 +188,7 @@ set(COLMAP_EXTERNAL_LIBRARIES
     ${OPENGL_LIBRARIES}
     ${GLEW_LIBRARIES}
     ${SQLite3_LIBRARIES}
+    ${VLFEAT_LIBRARIES}
 )
 
 if(UNIX)
