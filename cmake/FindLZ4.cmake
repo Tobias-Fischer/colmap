@@ -74,7 +74,7 @@ find_path(LZ4_INCLUDE_DIRS
     ${LZ4_CHECK_INCLUDE_DIRS})
 find_library(LZ4_LIBRARIES
     NAMES
-    lz4
+    lz4 liblz4
     PATHS
     ${LZ4_CHECK_LIBRARY_DIRS})
 
