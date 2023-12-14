@@ -60,6 +60,7 @@ COLMAP_ADD_LIBRARY(
         colmap_optim
         colmap_scene
         colmap_util
+        Boost::program_options
 )
 
 COLMAP_ADD_EXECUTABLE(
