@@ -37,7 +37,7 @@
 #include <vector>
 
 #ifdef COLMAP_ONNX_ENABLED
-#include <onnxruntime_cxx_api.h>
+#include <onnxruntime/core/session/onnxruntime_cxx_api.h>
 
 namespace colmap {
 
